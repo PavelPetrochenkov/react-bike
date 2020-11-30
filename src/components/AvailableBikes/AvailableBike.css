@@ -38,7 +38,8 @@
 }
 
 .button-rent:hover {
-    opacity: 0.75;
+    background:#1f318a;
+    color: white;
   }
 
 .button-delete{
@@ -56,5 +57,6 @@
 
 
 .button-delete:hover {
-    opacity: 0.75;
+    background: #a02731;
+    color: white;
   }

@@ -14,7 +14,7 @@ function MyBikeList({myBikeList,bikeList}){
     },0)
 
     return<div>
-            <h1>Your rent(${i.toFixed(2)})</h1>
+            <h3><span>&#129321;</span> Your rent(${i.toFixed(2)})</h3>
             { 
             (bikeListT.map((bike,index) =>{
                return <MyBikeItem bike={bike.bike} time={Math.ceil((new Date() - new Date(bike.startTimeOfUse))/1000/60/60)} key={index} />

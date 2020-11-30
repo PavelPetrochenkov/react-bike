@@ -57,7 +57,7 @@ function CreateBike({onCreate}){
 
     return(
     <div>
-        <h1>Create new rent</h1>
+        <h3><span>&#129297;</span> Create new rent</h3>
     <form onSubmit={submitHandler}>
         <div className='block-create'>
         <div className="block"><div><span className="text-create">Bike name</span></div><input {...inputName.bind} className="input-create" type='text'/></div>

@@ -17,6 +17,7 @@ code {
     monospace;
 }
 
-h1{
+h1, h3{
    font-family: Arial, Helvetica, sans-serif;
+   color: rgb(80, 80, 80);
 }

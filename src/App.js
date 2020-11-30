@@ -7,6 +7,8 @@ import MyBikeList from './components/MyBikes/MyBikeList'
 
 function App() {
 
+  const urlServer = "https://techstack-bike-app.herokuapp.com/";
+
   const [bikeList, setBikeList] = React.useState([])
 
   const [myBikeList, setMyBikeList] = React.useState([])
@@ -22,7 +24,7 @@ function App() {
   }
 
   async function getAllBike() {
-    const url = 'http://localhost:1328/bikes/';
+    const url = urlServer+'bikes/';
     fetch(url, {
       method: 'GET',
       headers: {
@@ -36,7 +38,7 @@ function App() {
   }
 
   async function getAllMyBikes() {
-    const url = 'http://localhost:1328/user/myRented';
+    const url = urlServer+'user/myRented';
     fetch(url, {
       method: 'GET',
       headers: {
@@ -64,7 +66,7 @@ function App() {
   // }
 
   async function createBike(name, type, price) {
-    const url = 'http://localhost:1328/bikes/create';
+    const url = urlServer+'bikes/create';
     const data = {
       name: name,
       type: type,
@@ -86,7 +88,7 @@ function App() {
   }
 
   async function deleteBike(id) {
-    const url = 'http://localhost:1328/bikes';
+    const url = urlServer+'bikes';
     const data = {
       bikeId: id,
     };
@@ -104,7 +106,7 @@ function App() {
   }
 
   async function rentBike(id) {
-    const url = 'http://localhost:1328/user/add';
+    const url = urlServer+'user/add';
     const data = {
       bikeId: id,
     };
@@ -123,7 +125,7 @@ function App() {
   }
 
   async function cancelBike(id) {
-    const url = 'http://localhost:1328/user/cancel';
+    const url = urlServer+'user/cancel';
     const data = {
       bikeId: id,
     };
