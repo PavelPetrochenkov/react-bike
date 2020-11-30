@@ -1,0 +1,60 @@
+.block-bike{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    padding: 21px;
+    width: 100%;
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 3px;
+    justify-content: space-between;
+    
+    margin-top: 15px;
+}
+
+.block-buttons{
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+}
+
+.button-block{
+    display: flex;
+    justify-content: flex-end;
+}
+.block-text{
+    font-size: large;
+}
+
+.button-rent{
+    border: 0px;
+    border-radius: 4px;
+    background: #364ec8;
+    width: 95%;
+    color: whitesmoke;
+    transition-duration: 0.4s;
+    height: 33px;
+    padding-bottom: 0px;
+    margin: auto;
+}
+
+.button-rent:hover {
+    opacity: 0.75;
+  }
+
+.button-delete{
+    max-width: 150px;
+    border: 0px;
+    border-radius: 4px;
+    background: #f42d3d;
+    width: 95%;
+    color: whitesmoke;
+    transition-duration: 0.4s;
+    height: 33px;
+    padding-bottom: 0px;
+    margin: auto;
+}
+
+
+.button-delete:hover {
+    opacity: 0.75;
+  }
