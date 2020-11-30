@@ -7,7 +7,7 @@ function AvailableBikeItem({bike}){
     const {rentBike} = useContext(Context)
     return(
         <div className='block-bike'>
-        <div><span className="block-text">{bike.name} / {bike.type} / ${bike.price}</span></div>
+        <div><span className="block-text">{bike._id} / {bike.type} / ${bike.price} for each 1 hour</span></div>
         <div  className='block-buttons'>
         <div className="block button-block"><button className="button-rent" onClick={()=>rentBike(bike._id)}>Rent</button></div>
         <div className="block button-block"><button className="button-delete" onClick={()=>deleteBike(bike._id)}>Delete</button></div>

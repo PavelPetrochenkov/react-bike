@@ -1,8 +1,5 @@
-import React, {useEffect  } from 'react'
-import ToDoList from './Todo/ToDoList'
-//import AddRentBike from './components/AddRentBike/AddRentBikeList'
+import React, { useEffect } from 'react'
 import Context from './context'
-import Loader from './Loader'
 import CreateBike from './components/CreateBike/CreateBike'
 import AvailableBikeList from './components/AvailableBikes/AvailableBikeList'
 import MyBikeList from './components/MyBikes/MyBikeList'
@@ -14,44 +11,40 @@ function App() {
 
   const [myBikeList, setMyBikeList] = React.useState([])
 
-  const [total, setTotal] = React.useState([])
-
-
-  useEffect(()=>{
+  useEffect(() => {
     loadDefault()
   }
-  ,[])
+    , [])
 
-
-  async function loadDefault(){
+  async function loadDefault() {
     getAllBike()
     getAllMyBikes()
   }
-  
-  async function getAllBike(){
+
+  async function getAllBike() {
     const url = 'http://localhost:1328/bikes/';
     fetch(url, {
-      method: 'GET', 
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response=> response.json()).then(item=>{
+    }).then(response => response.json()).then(item => {
       setBikeList(item.bikes)
-    }).catch(error=>{
+    }).catch(error => {
       console.error('Ошибка:', error);
     })
   }
 
-  async function getAllMyBikes(){
+  async function getAllMyBikes() {
     const url = 'http://localhost:1328/user/myRented';
     fetch(url, {
-      method: 'GET', 
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response=> response.json()).then(item=>{
+    }).then(response => response.json()).then(item => {
       setMyBikeList(item.alreadyRentedBike)
-    }).catch(error=>{
+    }).catch(error => {
       console.error('Ошибка:', error);
     })
   }
@@ -70,111 +63,93 @@ function App() {
   //   })
   // }
 
-
-  async function createBike(name,type,price){
+  async function createBike(name, type, price) {
     const url = 'http://localhost:1328/bikes/create';
-  const data = { 
-  name:  name,
-  type: type,
-  price:  price, 
-};
-fetch(url, {
-  method: 'POST', 
-  body: JSON.stringify(data), 
-  headers: {
-    'Content-Type': 'application/json'
+    const data = {
+      name: name,
+      type: type,
+      price: price,
+    };
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json()).then(item => {
+        getAllBike()
+      })
+      .catch(error => {
+        console.error('Ошибка:', error);
+      })
   }
-})
-.then(response=> response.json()).then(item=>{
-  getAllBike()
-})
-.catch(error=>{
-  console.error('Ошибка:', error);
-})}
-  
-  async function deleteBike(id){
+
+  async function deleteBike(id) {
     const url = 'http://localhost:1328/bikes';
-    const data = { 
-      bikeId:id,
+    const data = {
+      bikeId: id,
     };
     fetch(url, {
-      method: 'DELETE', 
-      body: JSON.stringify(data), 
+      method: 'DELETE',
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response=> response.json()).then(item=>{
+    }).then(response => response.json()).then(item => {
       getAllBike()
-    }).catch(error=>{
+    }).catch(error => {
       console.error('Ошибка:', error);
     })
   }
 
-  async function rentBike(id){
+  async function rentBike(id) {
     const url = 'http://localhost:1328/user/add';
-    const data = { 
-      bikeId:id,
+    const data = {
+      bikeId: id,
     };
     fetch(url, {
-      method: 'POST', 
-      body: JSON.stringify(data), 
+      method: 'POST',
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response=> response.json()).then(item=>{
+    }).then(response => response.json()).then(item => {
       getAllMyBikes()
       getAllBike()
-    }).catch(error=>{
+    }).catch(error => {
       console.error('Ошибка:', error);
     })
   }
 
-  async function cancelBike(id){
+  async function cancelBike(id) {
     const url = 'http://localhost:1328/user/cancel';
-    const data = { 
-      bikeId:id,
+    const data = {
+      bikeId: id,
     };
     fetch(url, {
-      method: 'POST', 
-      body: JSON.stringify(data), 
+      method: 'POST',
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response=> response.json()).then(item=>{
+    }).then(response => response.json()).then(item => {
       getAllMyBikes()
       getAllBike()
-    }).catch(error=>{
+    }).catch(error => {
       console.error('Ошибка:', error);
     })
   }
-
-
-  async function getTotal(){
-    let total =  myBikeList.map(bike=>{
-      return {
-          bike:(bikeList.filter(item=> item._id==bike.idBike))[0],
-          startTimeOfUse:bike.startTimeOfUse
-      }
-  })
-  console.log(total)
-  }
-
 
   return (
-    <Context.Provider value={{deleteBike , rentBike , cancelBike,getTotal}}>
-   <div className="wrapper">
-     <h1>Awesome Rental Bike</h1>
-      <div><CreateBike onCreate={createBike}/></div>
-     <MyBikeList myBikeList={myBikeList} bikeList={bikeList}  />
-      <div><AvailableBikeList bikeList={bikeList}/></div>
-      
-     {/* <React.Suspense fallback={<p>Loading...</p>}>
-      <AddTodo onCreate={addTodo}/>
-     </React.Suspense>
-     {loading && <Loader/>}
-     {todos.length ? (<ToDoList todos={todos} onToggle={toggleTodo}/>): (loading?null:<p>No todos</p>)} */}
-   </div>
-   </Context.Provider>
+    <Context.Provider value={{ deleteBike, rentBike, cancelBike }}>
+      <div className="wrapper">
+        <h1>Awesome Rental Bike</h1>
+        <div><CreateBike onCreate={createBike} /></div>
+        <MyBikeList myBikeList={myBikeList} bikeList={bikeList} />
+        <div><AvailableBikeList bikeList={bikeList} /></div>
+      </div>
+    </Context.Provider>
   );
 }
 

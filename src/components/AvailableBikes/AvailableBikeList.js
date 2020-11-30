@@ -6,7 +6,7 @@ function AvailableBikeList({bikeList}){
         <div>
             <h1>Available bicycles ({bikeList.filter((item)=>!item.isRent).length})</h1>
           { bikeList.map((bike,index) =>{
-               return (!bike.isRent)?<AvailableBikeItem bike={bike} key={bike._id.toString()} />:<div/>
+               return (!bike.isRent)?<AvailableBikeItem bike={bike} key={bikeList._id} />:<div/>
            })}
         </div>
     )

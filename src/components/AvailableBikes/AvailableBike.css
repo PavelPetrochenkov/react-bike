@@ -14,12 +14,12 @@
 .block-buttons{
     display: flex;
     flex-direction: row;
-    width: 150px;
 }
 
 .button-block{
     display: flex;
     justify-content: flex-end;
+    margin-left: 10px;
 }
 .block-text{
     font-size: large;
@@ -29,7 +29,7 @@
     border: 0px;
     border-radius: 4px;
     background: #364ec8;
-    width: 95%;
+    width: 150px;
     color: whitesmoke;
     transition-duration: 0.4s;
     height: 33px;
@@ -42,11 +42,11 @@
   }
 
 .button-delete{
-    max-width: 150px;
+    width: 150px;
     border: 0px;
     border-radius: 4px;
     background: #f42d3d;
-    width: 95%;
+    margin-left: 10px;
     color: whitesmoke;
     transition-duration: 0.4s;
     height: 33px;
