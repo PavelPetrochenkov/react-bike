@@ -7,8 +7,8 @@ import MyBikeList from './components/MyBikes/MyBikeList'
 
 function App() {
 
-  const urlServer = "https://techstack-bike-app.herokuapp.com/";
-  //const urlServer = "http://localhost:1328/";
+  //const urlServer = "https://techstack-bike-app.herokuapp.com/";
+  const urlServer = "http://localhost:1328/";
 
   const [bikeList, setBikeList] = React.useState([])
 
