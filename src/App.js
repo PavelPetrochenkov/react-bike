@@ -7,7 +7,8 @@ import MyBikeList from './components/MyBikes/MyBikeList'
 
 function App() {
 
-  const urlServer = "https://techstack-bike-app.herokuapp.com/";
+  //const urlServer = "https://techstack-bike-app.herokuapp.com/";
+  const urlServer = "http://localhost:1328/";
 
   const [bikeList, setBikeList] = React.useState([])
 
@@ -45,25 +46,11 @@ function App() {
         'Content-Type': 'application/json'
       }
     }).then(response => response.json()).then(item => {
-      setMyBikeList(item.alreadyRentedBike)
+      setMyBikeList(item.myBikes)
     }).catch(error => {
       console.error('Ошибка:', error);
     })
   }
-
-  // async function getAllRentedBikes(){
-  //   const url = 'http://localhost:1328/user/wasRented';
-  //   fetch(url, {
-  //     method: 'GET', 
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }).then(response=> response.json()).then(item=>{
-  //     console.log(item.wasRentedBike)
-  //   }).catch(error=>{
-  //     console.error('Ошибка:', error);
-  //   })
-  // }
 
   async function createBike(name, type, price) {
     const url = urlServer+'bikes/create';
