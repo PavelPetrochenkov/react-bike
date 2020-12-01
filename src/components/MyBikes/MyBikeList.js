@@ -10,7 +10,7 @@ function MyBikeList({myBikeList,bikeList}){
     }))
     let i= bikeListT.reduce((sum,item)=>{
         let time = Math.ceil((new Date() - new Date(item.startTimeOfUse))/1000/60/60);
-       return sum+=(item.bike)?((time>=10)?time/2:time)*item.bike.price:0
+       return sum+=(item.bike)?((time>=20)?time/2:time)*item.bike.price:0
     },0)
 
     return<div>
